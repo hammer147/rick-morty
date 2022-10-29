@@ -9,11 +9,9 @@ const Home: NextPage = () => {
 
   // const hello = trpc.example.hello.useQuery({ text: "from tRPC" })
 
-  const { data, status, isPreviousData } = trpc.rickandmorty.fetchCharacters.useQuery(page, {
+  const { data, status } = trpc.rickandmorty.fetchCharacters.useQuery(page, {
     keepPreviousData: true
   })
-
-  // console.log(status)
 
   if (status === 'loading') {
     return <div>Loading...</div>

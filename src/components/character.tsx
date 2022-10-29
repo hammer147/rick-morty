@@ -1,4 +1,7 @@
-type Props = any
+import { z } from 'zod'
+import { characterSchema } from '../schemas'
+
+type Props = { character: z.infer<typeof characterSchema> }
 
 export default function Character({ character }: Props) {
   return (
