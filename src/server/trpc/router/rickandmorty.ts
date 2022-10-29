@@ -1,5 +1,5 @@
-import { router, publicProcedure } from "../trpc"
-import { z } from "zod"
+import { router, publicProcedure } from '../trpc'
+import { z } from 'zod'
 import { TRPCError } from '@trpc/server'
 
 // https://transform.tools/json-to-zod
@@ -29,18 +29,14 @@ const rickandmortyValidator = z.object({
 })
 
 export const rickandmortyRouter = router({
-  fetchCharacters: publicProcedure
-    .input(z.number().positive())
-    .query(async ({ input }) => {
-      const rickandmortyRes = await fetch(
-        `https://rickandmortyapi.com/api/character?page=${input}`
-      )
-      // error handling
-      if (!rickandmortyRes.ok) {
-        // throw new TRPCError(...)
-      }
-      // validate the shape with Zod
-      const validated = rickandmortyValidator.parse(await rickandmortyRes.json())
-      return validated
-    }),
+  fetchCharacters: publicProcedure.input(z.number().positive()).query(async ({ input }) => {
+    const rickandmortyRes = await fetch(`https://rickandmortyapi.com/api/character?page=${input}`)
+    // error handling
+    if (!rickandmortyRes.ok) {
+      // throw new TRPCError(...)
+    }
+    // validate the shape with Zod
+    const validated = rickandmortyValidator.parse(await rickandmortyRes.json())
+    return validated
+  })
 })

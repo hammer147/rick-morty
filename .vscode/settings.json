@@ -1,5 +1,11 @@
 {
   "cSpell.words": [
     "rickandmorty"
-  ]
+  ],
+  "prettier.arrowParens": "avoid",
+  "prettier.bracketSameLine": true,
+  "prettier.printWidth": 100,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none"
 }
